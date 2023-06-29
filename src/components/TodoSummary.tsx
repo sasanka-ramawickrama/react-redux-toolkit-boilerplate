@@ -3,7 +3,7 @@ import { Divider, Typography } from "@mui/material";
 import { useAppSelector } from "../app/hooks";
 
 const TodoSummary: React.FC<{}> = () => {
-    const todoList = useAppSelector((state) => state.todo)
+    const todoList = useAppSelector((state) => state.todo.data)
     
     const [completedTodoCount, setCompletedTodoCount] = useState(0)
 

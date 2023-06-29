@@ -3,3 +3,8 @@ export interface TodoItem {
     title: string;
     isCompleted: boolean
 }
+
+export interface AsyncStateObject<T> {
+    isLoading: boolean,
+    data: T
+}

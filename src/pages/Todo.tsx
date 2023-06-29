@@ -2,14 +2,20 @@ import React from "react";
 import TodoList from "../components/TodoList";
 import TodoCreator from "../components/TodoCreator";
 import { Card, CardContent } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { useAppSelector } from "../app/hooks";
 import { TodoItem } from "../interfaces/todo";
-import { addTodo, deleteTodo, updateTodo } from "../redux/todoSlice";
+import { addTodo, deleteTodo, updateTodo } from "../redux/slices/todo";
 import TodoSummary from "../components/TodoSummary";
+import { fetchTodoList } from "../redux/actions/todo";
+import { useDispatch } from "react-redux";
 
 const Todo: React.FC<{}> = () => {
     const todoList = useAppSelector((state) => state.todo)
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch<any>()
+
+    React.useEffect(() => {
+        dispatch(fetchTodoList())
+    }, [])
 
     const onTodoSubmit = (data: string) => {
         const todo: TodoItem = {
@@ -38,7 +44,8 @@ const Todo: React.FC<{}> = () => {
                 />
                 
                 <TodoList
-                    data={todoList}
+                    data={todoList.data}
+                    isLoading={todoList.isLoading}
                     onTodoDelete={onTodoDelete}
                     onTodoUpdate={onTodoUpdate}
                 />

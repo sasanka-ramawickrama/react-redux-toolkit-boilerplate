@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import todoSlice from '../redux/todoSlice'
+import todoSlice from './slices/todo'
+import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 
 export const store = configureStore({
   reducer: {
     todo: todoSlice
   },
-  middleware: [logger]
+  middleware: [thunk, logger]
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
