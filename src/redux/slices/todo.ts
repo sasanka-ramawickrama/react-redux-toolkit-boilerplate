@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { AsyncStateObject, TodoItem } from '../../interfaces/todo'
-import { fetchTodoList } from '../actions/todo'
+import { AsyncStateObject, TodoItem } from '../../interfaces/'
+import { fetchTodoList } from '../actions/'
 
 const initialState: AsyncStateObject<Array<TodoItem>> = {
     isLoading: false,

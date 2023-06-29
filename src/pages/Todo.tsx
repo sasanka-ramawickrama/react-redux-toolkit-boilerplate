@@ -3,16 +3,17 @@ import TodoList from "../components/TodoList";
 import TodoCreator from "../components/TodoCreator";
 import { Card, CardContent } from "@mui/material";
 import { useAppSelector } from "../app/hooks";
-import { TodoItem } from "../interfaces/todo";
-import { addTodo, deleteTodo, updateTodo } from "../redux/slices/todo";
+import { TodoItem } from "../interfaces/";
+import { addTodo, deleteTodo, updateTodo } from "../redux/slices/";
 import TodoSummary from "../components/TodoSummary";
-import { fetchTodoList } from "../redux/actions/todo";
+import { fetchTodoList } from "../redux/actions/";
 import { useDispatch } from "react-redux";
 
 const Todo: React.FC<{}> = () => {
     const todoList = useAppSelector((state) => state.todo)
     const dispatch = useDispatch<any>()
 
+    // trigger data fetch action
     React.useEffect(() => {
         dispatch(fetchTodoList())
     }, [])
